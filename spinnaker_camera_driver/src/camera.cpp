@@ -150,9 +150,9 @@ void Camera::setNewConfiguration(const SpinnakerConfig& config, const uint32_t& 
       setProperty(node_map_, "BalanceWhiteAuto", config.auto_white_balance);
       if (config.auto_white_balance.compare(std::string("Off")) == 0)
       {
-        setProperty(node_map_, "BalanceRatioSelector", "Blue");
+        //setProperty(node_map_, "BalanceRatioSelector", "Blue");
         setProperty(node_map_, "BalanceRatio", static_cast<float>(config.white_balance_blue_ratio));
-        setProperty(node_map_, "BalanceRatioSelector", "Red");
+        //setProperty(node_map_, "BalanceRatioSelector", "Red");
         setProperty(node_map_, "BalanceRatio", static_cast<float>(config.white_balance_red_ratio));
       }
     }
@@ -186,6 +186,9 @@ void Camera::setNewConfiguration(const SpinnakerConfig& config, const uint32_t& 
 // Image Size and Pixel Format
 void Camera::setImageControlFormats(const spinnaker_camera_driver::SpinnakerConfig& config)
 {
+  // Enable or Disable ISP
+  setProperty(node_map_, "IspEnable", config.image_format_isp_enable);
+
   // Set Binning, Decimation, and Reverse
   setProperty(node_map_, "BinningHorizontal", config.image_format_x_binning);
   setProperty(node_map_, "BinningVertical", config.image_format_y_binning);
