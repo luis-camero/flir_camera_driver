@@ -604,7 +604,7 @@ private:
             ci_->roi.do_rectify = do_rectify_;
 
             wfov_image->info = *ci_;
-            
+
             // Publish the full message
             pub_->publish(wfov_image);
 
@@ -622,7 +622,7 @@ private:
 
           catch (std::runtime_error& e)
           {
-            NODELET_ERROR("[nodelet] %s", e.what());
+            NODELET_ERROR("%s", e.what());
             state = ERROR;
           }
 
