@@ -374,7 +374,7 @@ private:
     diag_man->addDiagnostic("PowerSupplyVoltage", true, std::make_pair(4.5f, 5.2f), 4.4f, 5.3f);
     diag_man->addDiagnostic("PowerSupplyCurrent", true, std::make_pair(0.4f, 0.6f), 0.3f, 1.0f);
     diag_man->addDiagnostic<int>("DeviceUptime");
-    diag_man->addDiagnostic<int>("U3VMessageChannelID");
+//    diag_man->addDiagnostic<int>("U3VMessageChannelID");
   }
 
   /**
@@ -604,7 +604,7 @@ private:
             ci_->roi.do_rectify = do_rectify_;
 
             wfov_image->info = *ci_;
-
+            
             // Publish the full message
             pub_->publish(wfov_image);
 
@@ -622,7 +622,7 @@ private:
 
           catch (std::runtime_error& e)
           {
-            NODELET_ERROR("%s", e.what());
+            NODELET_ERROR("[nodelet] %s", e.what());
             state = ERROR;
           }
 
